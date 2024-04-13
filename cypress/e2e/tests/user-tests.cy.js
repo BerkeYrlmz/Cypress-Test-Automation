@@ -15,6 +15,21 @@ describe('User Tests', () => {
     var errorMessage1 = "An internal error has occurred and has been logged.";
     var errorMessage2 = "Please enter a username and password."
 
+    it('Başarılı Kullanıcı Girişi Kontrolü', () => {
+
+        main_page
+            .goToUrl(url);
+  
+        login_page
+            .fillUserName("TestQa123")
+            .fillPassword("123")
+            .clickLogin();   
+  
+        home_page
+            .titleControl("Accounts Overview");
+  
+        })
+    
     it('Başarısız Kullanıcı Girişi Kontrolü', () => {
 
       main_page
@@ -28,22 +43,7 @@ describe('User Tests', () => {
       main_page
           .errorMessageControl(errorMessage1);
 
-    })
-
-    it('Başarılı Kullanıcı Girişi Kontrolü', () => {
-
-      main_page
-          .goToUrl(url);
-
-      login_page
-          .fillUserName(TestQa123)
-          .fillPassword(123)
-          .clickLogin();
-
-      home_page
-          .titleControl("Accounts Overview");
-
-      })
+        })
 
       it('Username Alanı Max Karakter Kontrolü', () => {
 
@@ -52,7 +52,7 @@ describe('User Tests', () => {
 
       login_page
           .fillUserName(base_lib.getRandomText(500))
-          .fillPassword(123)
+          .fillPassword("123")
           .clickLogin();
 
       main_page
@@ -66,7 +66,7 @@ describe('User Tests', () => {
           .goToUrl(url);
 
       login_page
-          .fillUserName(TestQa123)
+          .fillUserName("TestQa123")
           .fillPassword(base_lib.getRandomText(500))
           .clickLogin();
 
@@ -97,7 +97,7 @@ describe('User Tests', () => {
 
       login_page
           .clearFilledUsername()
-          .fillPassword(123)
+          .fillPassword("123")
           .clickLogin();
 
       main_page
@@ -111,8 +111,8 @@ describe('User Tests', () => {
           .goToUrl(url);
 
       login_page
-          .fillUserName()
-          .clearFilledPassword(123)
+          .fillUserName("TestQa123")
+          .clearFilledPassword()
           .clickLogin();
 
       main_page
